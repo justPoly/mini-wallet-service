@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useAccounts } from "../../hooks/useAccounts";
 import { useTransfer } from "../../hooks/useTransfer";
@@ -12,6 +12,14 @@ export default function TransferPage() {
   const [fromAccountId, setFromAccountId] = useState("");
   const [toAccountId, setToAccountId] = useState("");
   const [amount, setAmount] = useState("");
+
+  useEffect(() => {
+    if (transfer.isSuccess) {
+        setFromAccountId("");
+        setToAccountId("");
+        setAmount("");
+    }
+  }, [transfer.isSuccess]);
 
   const fromAccount = accounts?.find(
     (account) => account.id === fromAccountId
@@ -75,7 +83,7 @@ export default function TransferPage() {
                 key={account.id}
                 value={account.id}
               >
-                {account.name} ({account.currency})
+                {account.name} - {account.currency} ({account.balance.toFixed(2)})
               </option>
             ))}
           </select>
@@ -150,21 +158,31 @@ export default function TransferPage() {
 
         <button
           type="submit"
-          disabled={transfer.isPending}
+          disabled={
+            transfer.isPending ||
+            !fromAccountId ||
+            !toAccountId ||
+            fromAccountId === toAccountId ||
+            Number(amount) <= 0
+            }
         >
           {transfer.isPending ? "Transferring..." : "Transfer"}
         </button>
 
         {transfer.isSuccess && (
-          <p style={{ color: "green" }}>
+        <p style={{ color: "green" }}>
             ✅ Transfer completed successfully.
-          </p>
+        </p>
         )}
 
         {transfer.isError && (
-          <p style={{ color: "red" }}>
-            ❌ Transfer failed.
-          </p>
+        <p style={{ color: "red" }}>
+            ❌ {
+            transfer.error instanceof Error
+                ? transfer.error.message
+                : "Transfer failed."
+            }
+        </p>
         )}
       </form>
     </>
