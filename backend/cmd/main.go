@@ -1,6 +1,9 @@
 package main
 
 import (
+	"time"
+
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	"github.com/justPoly/mini-wallet-service/backend/database"
@@ -9,15 +12,32 @@ import (
 
 func main() {
 
-	// Connect database
 	database.ConnectDatabase()
 
-	// Create router
 	router := gin.Default()
 
-	// Register application routes
+	router.Use(cors.New(cors.Config{
+		AllowOrigins: []string{
+			"http://localhost:5173",
+		},
+		AllowMethods: []string{
+			"GET",
+			"POST",
+			"PUT",
+			"DELETE",
+			"OPTIONS",
+		},
+		AllowHeaders: []string{
+			"Origin",
+			"Content-Type",
+			"Accept",
+			"Authorization",
+		},
+		AllowCredentials: true,
+		MaxAge: 12 * time.Hour,
+	}))
+
 	routes.RegisterRoutes(router)
 
-	// Start server
 	router.Run(":8080")
 }
