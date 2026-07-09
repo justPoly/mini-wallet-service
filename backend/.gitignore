@@ -1,0 +1,17 @@
+# Environment
+.env
+
+# SQLite
+*.db
+*.db-journal
+
+# Go
+tmp/
+bin/
+
+# IDE
+.vscode/
+
+# Node
+../frontend/node_modules/
+../frontend/dist/
