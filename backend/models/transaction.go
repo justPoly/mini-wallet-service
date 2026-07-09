@@ -16,12 +16,12 @@ const (
 )
 
 type Transaction struct {
-	ID          string          `gorm:"type:text;primaryKey"`
-	AccountID   string          `gorm:"not null;index"`
-	Type        TransactionType `gorm:"not null"`
-	Amount      float64         `gorm:"not null"`
-	Description string
-	CreatedAt   time.Time
+	ID          string    `gorm:"type:text;primaryKey" json:"id"`
+	AccountID   string    `gorm:"not null" json:"accountId"`
+	Type        string    `gorm:"not null" json:"type"`
+	Amount      float64   `gorm:"not null" json:"amount"`
+	Description string    `json:"description"`
+	CreatedAt   time.Time `json:"createdAt"`
 }
 
 func (t *Transaction) BeforeCreate(tx *gorm.DB) error {
