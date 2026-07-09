@@ -1,27 +1,23 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+
 	"github.com/justPoly/mini-wallet-service/backend/database"
+	"github.com/justPoly/mini-wallet-service/backend/routes"
 )
 
 func main() {
 
-	// Connect to the SQLite database
+	// Connect database
 	database.ConnectDatabase()
 
-	// Create the Gin router
+	// Create router
 	router := gin.Default()
 
-	// Health check endpoint
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Mini Wallet API is running 🚀",
-		})
-	})
+	// Register application routes
+	routes.RegisterRoutes(router)
 
-	// Start the server
+	// Start server
 	router.Run(":8080")
 }

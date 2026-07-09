@@ -37,6 +37,7 @@ func ConnectDatabase() {
 	// Automatically create/update database tables
 	err = DB.AutoMigrate(
 		&models.Account{},
+		&models.Transaction{},
 	)
 
 	if err != nil {
