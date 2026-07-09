@@ -6,6 +6,7 @@ interface Props {
 }
 
 export default function AccountCard({ account }: Props) {
+  console.log(account);
   return (
     <Link
       to={`/accounts/${account.id}`}
@@ -19,13 +20,13 @@ export default function AccountCard({ account }: Props) {
         color: "inherit",
       }}
     >
-      <h3>{account.name}</h3>
+        <h3>{account.name ?? "Unknown"}</h3>
 
-      <p>Currency: {account.currency}</p>
+        <p>Currency: {account.currency ?? "-"}</p>
 
-      <h2>
-        {account.currency} {account.balance.toFixed(2)}
-      </h2>
+        <h2>
+        {account.currency ?? "-"} {(account.balance ?? 0).toFixed(2)}
+        </h2>
     </Link>
   );
 }

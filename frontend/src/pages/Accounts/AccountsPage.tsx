@@ -6,6 +6,8 @@ import { useAccounts } from "../../hooks/useAccounts";
 export default function AccountsPage() {
   const { data, isLoading, isError } = useAccounts();
 
+  console.log("Accounts:", data);
+
   if (isLoading) {
     return <Loading />;
   }
