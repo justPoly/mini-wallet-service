@@ -76,38 +76,6 @@ The implementation focuses on correctness, API design, and reliability rather th
 * TanStack React Query
 * Axios
 * React Router
-
----
-
-# Project Structure
-
-```text
-mini-wallet-service/
-
-├── backend/
-│   ├── database/
-│   ├── handlers/
-│   ├── models/
-│   ├── repositories/
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
-│   ├── main.go
-│   └── go.mod
-│
-└── frontend/
-    ├── src/
-    │   ├── api/
-    │   ├── components/
-    │   ├── hooks/
-    │   ├── pages/
-    │   ├── services/
-    │   ├── types/
-    │   ├── utils/
-    │   └── App.tsx
-    └── package.json
-```
-
 ---
 
 # API Endpoints
