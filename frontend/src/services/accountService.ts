@@ -24,6 +24,15 @@ export const getTransactions = async (
 };
 
 export async function transferMoney(data: TransferRequest) {
-  const response = await client.post("/transfer", data);
+  const response = await client.post(
+    "/transfers",
+    data,
+    {
+      headers: {
+        "Idempotency-Key": Date.now().toString(),
+      },
+    }
+  );
+
   return response.data;
 }

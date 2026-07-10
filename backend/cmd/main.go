@@ -29,9 +29,14 @@ func main() {
 		},
 		AllowHeaders: []string{
 			"Origin",
+			"Content-Length",
 			"Content-Type",
 			"Accept",
 			"Authorization",
+			"Idempotency-Key",
+		},
+		ExposeHeaders: []string{
+			"Content-Length",
 		},
 		AllowCredentials: true,
 		MaxAge: 12 * time.Hour,

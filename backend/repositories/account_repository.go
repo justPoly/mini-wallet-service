@@ -13,7 +13,9 @@ func GetAllAccounts() ([]models.Account, error) {
 
 	var accounts []models.Account
 
-	err := database.DB.Find(&accounts).Error
+	err := database.DB.
+		Order("created_at ASC").
+		Find(&accounts).Error
 
 	return accounts, err
 }
@@ -22,7 +24,9 @@ func GetAccountByID(id string) (*models.Account, error) {
 
 	var account models.Account
 
-	err := database.DB.First(&account, "id = ?", id).Error
+	err := database.DB.
+		Where("id = ?", id).
+		First(&account).Error
 
 	if err != nil {
 		return nil, err
@@ -39,14 +43,24 @@ func CreateTransaction(transaction *models.Transaction) error {
 	return database.DB.Create(transaction).Error
 }
 
-func GetTransactionsByAccountID(accountID string) ([]models.Transaction, error) {
+func GetTransactionsByAccountID(
+	accountID string,
+	limit int,
+	offset int,
+) ([]models.Transaction, error) {
 
 	var transactions []models.Transaction
 
 	err := database.DB.
 		Where("account_id = ?", accountID).
 		Order("created_at DESC").
+		Limit(limit).
+		Offset(offset).
 		Find(&transactions).Error
 
-	return transactions, err
+	if err != nil {
+		return nil, err
+	}
+
+	return transactions, nil
 }

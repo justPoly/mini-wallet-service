@@ -32,7 +32,9 @@ export default function TransferPage() {
   const convertedAmount =
     fromAccount &&
     toAccount &&
-    amount
+    amount &&
+    exchangeRates[fromAccount.currency] &&
+    exchangeRates[fromAccount.currency][toAccount.currency] !== undefined
       ? Number(amount) *
         exchangeRates[fromAccount.currency][toAccount.currency]
       : null;
@@ -148,7 +150,7 @@ export default function TransferPage() {
 
                 <p>
                   {Number(amount).toFixed(2)} {fromAccount.currency} ≈{" "}
-                  {convertedAmount?.toFixed(2)} {toAccount.currency}
+                  {convertedAmount !== null ? convertedAmount.toFixed(2) : "Unsupported currency pair"} {toAccount.currency}
                 </p>
               </div>
             </>

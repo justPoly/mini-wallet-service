@@ -19,6 +19,6 @@ func RegisterRoutes(router *gin.Engine) {
 	router.GET("/accounts/:id", handlers.GetAccount)
 	router.POST("/accounts/:id/deposit", handlers.Deposit)
 
-	router.POST("/transfer", handlers.Transfer)
+	router.POST("/transfers", handlers.Transfer)
 	router.GET("/accounts/:id/transactions", handlers.GetTransactions)
 }
