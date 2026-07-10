@@ -323,6 +323,28 @@ http://localhost:5173
 
 ---
 
+## Backend Unit Tests
+
+The project includes unit tests covering critical business logic such as:
+
+- Currency conversion
+- Unsupported currency conversion
+- Idempotency handling
+- Duplicate idempotency replay
+- Insufficient funds validation
+
+Run all tests:
+
+```bash
+go test -v ./...
+```
+
+Or run individual packages:
+
+```bash
+go test -v ./utils
+```
+
 # Testing Data
 
 Example accounts

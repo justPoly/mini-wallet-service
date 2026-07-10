@@ -274,6 +274,7 @@ func GetTransactions(c *gin.Context) {
 	}
 
 	page := 1
+	limit := 10
 
 	if p := c.Query("page"); p != "" {
 		fmt.Sscanf(p, "%d", &page)

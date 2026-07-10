@@ -16,3 +16,16 @@ func TestConvertUSDToNGN(t *testing.T) {
 		t.Errorf("Expected %.2f, got %.2f", expected, result)
 	}
 }
+
+func TestUnsupportedCurrency(t *testing.T) {
+
+	_, err := Convert(
+		100,
+		"USD",
+		"JPY",
+	)
+
+	if err == nil {
+		t.Fatal("expected error for unsupported currency")
+	}
+}
