@@ -1,6 +1,6 @@
 # Mini Multi-Currency Wallet Service
 
-A full-stack technical assessment implementing a simplified multi-currency wallet system inspired by modern fintech platforms.
+A full-stack technical implementation of a simplified multi-currency wallet system inspired by modern fintech platforms.
 
 Built with:
 
