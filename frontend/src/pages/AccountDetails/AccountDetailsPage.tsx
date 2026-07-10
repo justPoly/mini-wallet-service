@@ -17,10 +17,12 @@ export default function AccountDetailsPage() {
   } = useAccount(id ?? "");
 
   const {
-    data: transactions,
+    data: transactionResponse,
     isLoading: transactionLoading,
     isError: transactionError,
   } = useTransactions(id ?? "");
+
+  const transactions = transactionResponse?.transactions ?? [];
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);

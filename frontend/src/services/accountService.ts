@@ -13,10 +13,16 @@ export const getAccount = async (id: string): Promise<Account> => {
   return response.data;
 };
 
+interface TransactionsResponse {
+  page: number;
+  limit: number;
+  transactions: Transaction[];
+}
+
 export const getTransactions = async (
   accountId: string
-): Promise<Transaction[]> => {
-  const response = await client.get<Transaction[]>(
+): Promise<TransactionsResponse> => {
+  const response = await client.get<TransactionsResponse>(
     `/accounts/${accountId}/transactions`
   );
 
