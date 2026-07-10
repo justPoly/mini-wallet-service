@@ -396,7 +396,7 @@ Given more time, the following enhancements would be implemented:
 
 A short demonstration video is available here:
 
-**Add your Loom, YouTube (unlisted), or Google Drive link here**
+https://www.loom.com/share/1048d26436344fac88dd30d54a4fe014
 
 ---
 
