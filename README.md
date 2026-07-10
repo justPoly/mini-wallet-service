@@ -25,6 +25,14 @@ The implementation focuses on correctness, API design, and reliability rather th
 
 ---
 
+# Video Demonstration
+
+A short demonstration video is available here:
+
+https://www.loom.com/share/39037c758e2a4571b2bcdc99de3d3a31
+
+---
+
 # Features
 
 ## Backend
@@ -389,14 +397,6 @@ Given more time, the following enhancements would be implemented:
 * Decimal arithmetic for monetary values
 * Audit logging
 * Role-based permissions
-
----
-
-# Video Demonstration
-
-A short demonstration video is available here:
-
-https://www.loom.com/share/39037c758e2a4571b2bcdc99de3d3a31
 
 ---
 
